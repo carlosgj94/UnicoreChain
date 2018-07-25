@@ -1,0 +1,6 @@
+[package]
+name = "unicore_p2p"
+version = "0.1.0"
+authors = ["carlosgj94 <carlosgj94@gmail.com>"]
+
+[dependencies]
