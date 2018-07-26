@@ -2,6 +2,7 @@
 name = "unicore_chain"
 version = "0.1.0"
 authors = ["carlosgj94 <carlosgj94@gmail.com>"]
+publish = false
 
 [dependencies]
 unicore_p2p = { path = "./p2p" }

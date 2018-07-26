@@ -7,7 +7,12 @@ extern crate serde_json;
 #[derive(Serialize)]
 struct Connections {
     address: String,
-    port: u16,
+    alive: bool,
+}
+
+#[derive(Serialize)]
+struct Version {
+    version: String
 }
 
 pub struct Server {
@@ -24,18 +29,27 @@ impl Server {
     pub fn start(&self) {
         println!("Server connected on: {}", self.port);
         server::new(|| App::new()
-            .resource("/", |r| r.method(Method::GET).f(running)))
+            .resource("/", |r| r.method(Method::GET).f(version))
+            .resource("/get-nodes", |r| r.method(Method::GET).f(get_nodes)))
             .bind("127.0.0.1:8088")
             .unwrap()
             .run();
     }
 }
 
-fn running(_req: &HttpRequest) -> Result<HttpResponse, Error> {
+fn version(_req: &HttpRequest) -> Result<HttpResponse, Error> {
+    Ok(HttpResponse::Ok()
+        .content_type("application/json")
+        .body(serde_json::to_string(&Version {
+            version: env!("CARGO_PKG_VERSION").to_string()
+        }).unwrap()).into())
+}
+
+fn get_nodes(_req: &HttpRequest) -> Result<HttpResponse, Error> {
     Ok(HttpResponse::Ok()
         .content_type("application/json")
         .body(serde_json::to_string(&Connections {
-            address: "127.0.0.1".to_string(),
-            port: 8088,
+            address: "127.0.0.1:8088".to_string(),
+            alive: true,
         }).unwrap()).into())
 }
