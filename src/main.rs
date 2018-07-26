@@ -6,6 +6,6 @@ fn main() {
     println!("Hello, world!");
     let _client = Client::new(80);
     let _server = Server::new(80);
-    _server.connect();
+    _server.start();
     _client.connect();
 }
