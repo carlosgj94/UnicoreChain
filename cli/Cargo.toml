@@ -1,5 +1,5 @@
 [package]
-name = "prueba-cli"
+name = "unicore_cli"
 version = "0.1.0"
 authors = ["Diego <diego.lgrip@gmail.com>"]
 
