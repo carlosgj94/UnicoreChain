@@ -1,8 +1,8 @@
-extern crate unicore_p2p as p2p;
 extern crate unicore_cli as cli;
+extern crate unicore_p2p as p2p;
 
+use cli::cli as Cli;
 use p2p::{Client, Server};
-use cli::{cli as Cli};
 
 fn main() {
     println!("Hello, world!");

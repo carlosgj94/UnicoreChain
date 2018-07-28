@@ -4,12 +4,10 @@ pub struct Client {
 
 impl Client {
     pub fn new(port: u16) -> Client {
-        Client {
-            port: port
-        }
+        Client { port: port }
     }
 
-    pub fn connect (&self) {
+    pub fn connect(&self) {
         println!("Client connected on: {}", self.port);
     }
 }
