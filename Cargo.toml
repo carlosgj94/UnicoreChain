@@ -12,5 +12,6 @@ unicore_db = { path = "./db" }
 unicore_keys = { path = "./keys" }
 unicore_miner = { path = "./miner" }
 unicore_p2p = { path = "./p2p" }
+unicore_primitives = { path = "./primitives" }
 unicore_sync = { path = "./sync" }
 serde_derive = "1.0"

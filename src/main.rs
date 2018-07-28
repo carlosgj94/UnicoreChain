@@ -9,6 +9,6 @@ fn main() {
     let _client = Client::new(80);
     let _server = Server::new(80);
     Cli::cli();
-    _server.start();
+    // _server.start();
     _client.connect();
 }

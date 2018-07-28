@@ -1,0 +1,10 @@
+[package]
+name = "unicore_primitives"
+version = "0.1.0"
+authors = ["carlosgj94 <carlosgj94@gmail.com>"]
+
+[dependencies]
+heapsize = "0.4"
+rustc-serialize = "0.3"
+byteorder = "1.0"
+bigint = "1.0"
