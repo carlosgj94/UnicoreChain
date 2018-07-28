@@ -6,6 +6,7 @@ use hash::{H256, H520};
 pub use primitives::{bytes, hash};
 
 pub mod private;
+pub mod public;
 
 /// 32 bytes long secret key
 pub type Secret = H256;
