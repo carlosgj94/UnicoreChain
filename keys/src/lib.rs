@@ -2,11 +2,18 @@ extern crate base58;
 extern crate secp256k1;
 extern crate unicore_primitives as primitives;
 
-use hash::{H256, H520};
+use hash::{H160, H256, H520};
 pub use primitives::{bytes, hash};
 
-pub mod private;
-pub mod public;
+mod address;
+mod keypair;
+mod private;
+mod public;
+
+pub use address::Address;
+pub use keypair::KeyPair;
+pub use private::Private;
+pub use public::Public;
 
 /// 32 bytes long secret key
 pub type Secret = H256;
@@ -14,3 +21,5 @@ pub type Secret = H256;
 pub type Message = H256;
 /// 32 bytes long Signature
 pub type Signature = H520;
+/// 20 bytes long hash derived from public `ripemd160(sha256(public))`
+pub type AddressHash = H160;
