@@ -1,5 +1,5 @@
 [package]
-name = "miner"
+name = "unicore_miner"
 version = "0.1.0"
 authors = ["carlosgj94 <carlosgj94@gmail.com>"]
 
