@@ -61,6 +61,15 @@ fn version(version: Json<Version>) -> Result<HttpResponse, VersionError> {
 }
 
 fn get_nodes(_req: &HttpRequest) -> Result<HttpResponse, Error> {
+    let info = _req.connection_info();
+
+    match info.remote() {
+        Some(ref p) => {
+            println!("has value {}", p)
+        },
+        None => println!("has no value"),
+    }
+
     Ok(HttpResponse::Ok()
         .content_type("application/json")
         .body(serde_json::to_string(&Connection {
