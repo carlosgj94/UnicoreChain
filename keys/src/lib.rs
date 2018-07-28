@@ -1,4 +1,6 @@
 extern crate base58;
+#[macro_use]
+extern crate lazy_static;
 extern crate secp256k1;
 extern crate unicore_primitives as primitives;
 
@@ -23,3 +25,7 @@ pub type Message = H256;
 pub type Signature = H520;
 /// 20 bytes long hash derived from public `ripemd160(sha256(public))`
 pub type AddressHash = H160;
+
+lazy_static! {
+    pub static ref SECP256K1: secp256k1::Secp256k1 = secp256k1::Secp256k1::new();
+}

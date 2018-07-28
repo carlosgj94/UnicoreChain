@@ -6,4 +6,5 @@ authors = ["carlosgj94 <carlosgj94@gmail.com>"]
 [dependencies]
 base58 = "0.1"
 eth-secp256k1 = { git = "https://github.com/ethcore/rust-secp256k1" }
+lazy_static = "1.0"
 unicore_primitives = { path = "../primitives" }
