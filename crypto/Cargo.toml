@@ -6,3 +6,4 @@ authors = ["carlosgj94 <carlosgj94@gmail.com>"]
 [dependencies]
 rust-crypto = "0.2.36"
 siphasher = "0.2.2"
+unicore_primitives = { path = "../primitives" }

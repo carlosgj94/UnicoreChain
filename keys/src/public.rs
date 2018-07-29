@@ -1,8 +1,9 @@
 use base58::FromBase58;
+use crypto::dhash160;
 use hash::H264;
 use secp256k1::Error;
 use std::str::FromStr;
-use {Message, Signature};
+use {AddressHash, Message, Signature};
 
 #[derive(PartialEq)]
 pub struct Public {
@@ -23,6 +24,10 @@ impl Public {
         } else {
             Err(Error::InvalidPublicKey)
         }
+    }
+
+    pub fn address_hash(&self) -> AddressHash {
+        dhash160(&self.address.clone().take())
     }
 }
 

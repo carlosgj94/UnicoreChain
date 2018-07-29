@@ -2,6 +2,7 @@ extern crate base58;
 #[macro_use]
 extern crate lazy_static;
 extern crate secp256k1;
+extern crate unicore_crypto as crypto;
 extern crate unicore_primitives as primitives;
 
 use hash::{H160, H256, H520};
