@@ -14,6 +14,10 @@ impl Private {
     pub fn sign(&self, _message: &Message) -> Signature {
         unimplemented!();
     }
+
+    pub fn from_secret(secret: Secret) -> Self {
+        Private { secret: secret }
+    }
 }
 
 impl FromStr for Private {
