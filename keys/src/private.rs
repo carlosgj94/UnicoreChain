@@ -1,42 +1,26 @@
-use base58::FromBase58;
-use secp256k1::Error;
-use std::str::FromStr;
-use {Message, Secret, Signature};
+use base58::ToBase58;
+pub use rustc_serialize::hex::ToHex;
+use secp256k1::key::SecretKey;
+use std::fmt;
 
 #[derive(PartialEq)]
-pub struct Private {
-    /// ECDSA key.
-    pub secret: Secret,
-}
+pub struct Private(SecretKey);
 
 impl Private {
     /// Function that signs a message and returns the signature
-    pub fn sign(&self, _message: &Message) -> Signature {
+    pub fn sign(&self) {
         unimplemented!();
     }
-
-    pub fn from_secret(secret: Secret) -> Self {
-        Private { secret: secret }
+    pub fn from_secret_key(secret: SecretKey) -> Self {
+        Private(secret)
     }
 }
 
-impl FromStr for Private {
-    type Err = Error;
-
-    fn from_str(s: &str) -> Result<Self, Error> {
-        let hex = try!(s.from_base58().map_err(|_| Error::InvalidSecretKey));
-
-        if hex.len() != 33 {
-            return Err(Error::InvalidSecretKey);
-        }
-
-        let secret = Secret::from_str(s);
-
-        match secret {
-            Ok(v) => {
-                return Ok(Private { secret: v });
-            }
-            Err(_) => return Err(Error::InvalidSecretKey),
-        }
+impl fmt::Display for Private {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        let mut content = vec![];
+        content.extend(self.0[0..].iter());
+        fmt.write_str(&content.to_base58())?;
+        Ok(())
     }
 }

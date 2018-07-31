@@ -1,18 +1,20 @@
 use rand::os::OsRng;
 use secp256k1::Error;
-use {KeyPair, Private, SECP256K1, Secret};
+use secp256k1::Secp256k1;
+use {KeyPair, Private, Public};
 
 pub trait Generator {
-    fn generate(&self) -> Result<KeyPair, Error>;
+    fn generate(&self) -> KeyPair;
 }
 
 impl Generator {
-    pub fn generate(&self) -> Result<KeyPair, Error> {
-        let context = &SECP256K1;
-        let mut rng = try!(OsRng::new().map_err(|_| Error::InvalidSecretKey));
-        let (secret, _public) = try!(context.generate_keypair(&mut rng));
-        let mut secret_hash = Secret::default();
-        secret_hash.copy_from_slice(&secret[0..32]);
-        KeyPair::from_private(Private::from_secret(secret_hash))
+    pub fn generate(&self) -> KeyPair {
+        let context = Secp256k1::new();
+        let rng = OsRng::new().map_err(|_| Error::InvalidSecretKey).ok();
+        let res = context.generate_keypair(&mut rng.unwrap());
+        let (secret, publickey) = res.unwrap();
+        let private = Private::from_secret_key(secret);
+        let public = Public::from_public_key(publickey);
+        KeyPair::from_keypair(private, public)
     }
 }

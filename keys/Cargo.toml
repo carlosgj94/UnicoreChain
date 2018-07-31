@@ -4,9 +4,9 @@ version = "0.1.0"
 authors = ["carlosgj94 <carlosgj94@gmail.com>"]
 
 [dependencies]
-base58 = "0.1"
 eth-secp256k1 = { git = "https://github.com/ethcore/rust-secp256k1" }
-lazy_static = "1.0"
 rand = "0.4.0"
-unicore_primitives = { path = "../primitives" }
-unicore_crypto = { path = "../crypto" }
+base58 = "0.1"
+rustc-serialize = "0.3"
+arrayvec = "0.4.7"
+rust-crypto = "0.2.36"
