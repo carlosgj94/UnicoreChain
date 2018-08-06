@@ -1,4 +1,6 @@
 extern crate bytes;
+extern crate unicore_primitives as primitives;
+
 mod block;
 mod block_header;
 mod transaction;

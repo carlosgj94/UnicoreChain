@@ -1,8 +1,6 @@
 [package]
-name = "unicore_chain"
+name = "unicore_primitives"
 version = "0.1.0"
 authors = ["carlosgj94 <carlosgj94@gmail.com>"]
 
 [dependencies]
-bytes = "0.4"
-unicore_primitives = { path = "../primitives" }

@@ -1,8 +1,9 @@
 use bytes::Bytes;
+use primitives::H256;
 
 pub struct OutPoint {
     /// Transaction id of the transaction holding the utxo
-    pub hash: String,
+    pub hash: H256,
     /// The number of the output index number
     pub index: u32,
 }

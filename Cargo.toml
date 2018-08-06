@@ -7,6 +7,7 @@ publish = false
 [dependencies]
 unicore_chain = { path = "./chain" }
 unicore_cli = { path = "./cli" }
+unicore_primitives = { path = "./primitives" }
 unicore_db = { path = "./db" }
 unicore_keys = { path = "./keys" }
 unicore_miner = { path = "./miner" }
