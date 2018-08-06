@@ -1,3 +1,4 @@
+extern crate bytes;
 mod block;
 mod block_header;
 mod transaction;
