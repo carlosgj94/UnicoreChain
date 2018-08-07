@@ -7,6 +7,12 @@ macro_rules! impl_hash {
                 $name([0u8; $size])
             }
         }
+
+        impl From<$name> for [u8; $size] {
+            fn from(h: $name) -> Self {
+                h.0
+            }
+        }
     };
 }
 
