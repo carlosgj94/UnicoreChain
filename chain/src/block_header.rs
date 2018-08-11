@@ -8,7 +8,7 @@ pub struct BlockHeader {
     /// The time is starting to be mined
     pub time: u32,
     /// The magical number that has to be found
-    pub nonce: String,
+    pub nonce: u64,
     /// Difficulty of the block
     pub bits: u8,
 }
